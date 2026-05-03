@@ -190,9 +190,119 @@ nav a:hover {
   font-weight: bold;
 }
 
+/* MOBILE TWEAK */
+@media(max-width: 768px) {
+  .price-table {
+    font-size: 12px;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 8px;
+  }
+}
+  
+/* CTA */
+.cta {
+  width: 90%;
+  margin: 40px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #25D366;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+
 /* MOBILE */
-@media(max-width:768px){
-  .hero { grid-template-columns: 1fr; }
+@media(max-width: 768px) {
+
+  /* NAV FIX */
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* LOGO + TITLE */
+  .logo-header {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo-header h1 {
+    font-size: 16px;
+    white-space: normal; /* allow wrapping on mobile */
+  }
+
+  .logo-header img {
+    height: 45px;
+  }
+
+  /* HERO FIX */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  /* FORM FIX */
+  .booking-form {
+    padding: 15px;
+  }
+
+  .booking-form input,
+  .booking-form select {
+    padding: 10px;
+  }
+
+  /* SECTIONS */
+  .price-list,
+  .features,
+  .cta {
+    padding: 20px;
+  }
+
+  /* IMAGE FIX */
+  .price-image-container img {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  /* FEATURE GRID */
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* BUTTON */
+  .btn {
+    padding: 14px;
+  }
 }
 </style>
 </head>
