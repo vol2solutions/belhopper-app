@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BelHopper</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a1f44, #0f2f6b, #f4b400);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* GLASS */
+.glass {
+  background: rgba(10, 31, 68, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* NAV */
+nav {
+  width: 90%;
+  margin: 20px auto;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.logo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-header img {
+  height: 55px;
+  filter: drop-shadow(0 0 6px rgba(244,180,0,0.5));
+}
+
+.logo-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.tagline {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* HERO */
+.hero {
+  width: 90%;
+  margin: 30px auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+/* FORM */
+.booking-form {
+  padding: 25px;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #f4b400;
+  color: #0a1f44;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #d99c00;
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #d1fae5;
+}
+
+/* TABLE */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.price-table th,
+.price-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.price-table th {
+  background: rgba(0,0,0,0.25);
+}
+
+.price-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.price-table tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.price-table tr:hover {
+  background: rgba(244,180,0,0.25);
+}
+
+.section-row td {
+  background: rgba(244,180,0,0.4);
+  font-weight: bold;
+  text-align: left;
+}
+
+/* FEATURES */
+.features, .price-list, .cta {
+  width: 90%;
+  margin: 40px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.feature-grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+/* CTA */
+.whatsapp-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #25D366;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="glass">
+  <div class="logo-header">
+    <img src="images/belhopper-logo.png">
+    <div>
+      <h1>BELHOPPER</h1>
+      <div class="tagline">Your Ride. Your Way.</div>
+    </div>
+  </div>
+
+  <ul>
+    <li><a href="rules.html">Rules</a></li>
+    <li><a href="feedbackandcomplaints.html">Feedback</a></li>
+    <li><a href="process.html">How it Works</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero glass">
+
+  <div>
+    <h1>Your Ride. Your Way.</h1>
+    <p>Request a ride instantly and connect with drivers in Belhar.</p>
+  </div>
+
+  <div class="booking-form glass">
+    <h3>Book Your Trip</h3>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="text" id="pickup" placeholder="Pickup Location">
+    <input type="text" id="dropoff" placeholder="Drop-off Location">
+
+    <select id="time">
+      <option>Immediately</option>
+      <option>Later</option>
+    </select>
+
+    <input type="text" id="passenger" placeholder="Passengers">
+
+    <select id="return">
+      <option disabled selected>Return Trip</option>
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+
+    <button class="btn" onclick="sendRideRequest()">Send via WhatsApp</button>
+  </div>
+
+</section>
+
+<!-- PRICE -->
+<section class="price-list glass">
+  <h2>Price List</h2>
+
+  <div class="table-container">
+    <table class="price-table">
+      <tr><th>Route</th><th>Price</th></tr>
+      <tr><td>Local Trips</td><td>R35 - R55</td></tr>
+      <tr><td>Nearby Areas</td><td>R60 - R120</td></tr>
+      <tr><td>Long Distance</td><td>R120 - R210</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features glass">
+  <h2>Why Choose BelHopper</h2>
+
+  <div class="feature-grid">
+    <div class="glass">Fast Pickup</div>
+    <div class="glass">Trusted Local Drivers</div>
+    <div class="glass">Ride On Demand</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta glass">
+  <h2>Join the Ride Network</h2>
+  <p>Request rides instantly via WhatsApp</p>
+
+  <a href="https://wa.me/" class="whatsapp-btn" target="_blank">
+    Open WhatsApp
+  </a>
+</section>
+
+<footer style="text-align:center; padding:20px; font-size:12px;">
+  Developed by Vol.2 Solutions
+</footer>
+
+<script>
+function sendRideRequest() {
+  const name = document.getElementById("name").value;
+  const pickup = document.getElementById("pickup").value;
+  const dropoff = document.getElementById("dropoff").value;
+
+  const message =
+`BelHopper Ride Request
+Name: ${name}
+Pickup: ${pickup}
+Dropoff: ${dropoff}`;
+
+  navigator.clipboard.writeText(message).then(() => {
+    window.open("https://wa.me/", "_blank");
+    alert("Copied. Paste in WhatsApp.");
+  });
+}
+</script>
+
+</body>
+</html>
