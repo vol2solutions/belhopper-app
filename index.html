@@ -430,16 +430,14 @@ function sendRideRequest() {
     returnTrip
   };
 
-  // 🔗 SEND TO GOOGLE SHEETS
-  fetch("https://script.google.com/macros/s/AKfycbwgYCzw9G_-sPRp1ayTPUiHqva0OppBLEdWozY22KcDES1d7p9Dy4EbS-xMSKsopy1JQw/exec", {
+  // SEND TO GOOGLE SHEETS
+  fetch("YOUR_SCRIPT_URL_HERE", {
     method: "POST",
     body: JSON.stringify(rideData)
   })
-  .then(res => res.json())
-  .then(data => console.log("Saved:", data))
-  .catch(err => console.error("Error:", err));
+  .catch(err => console.error("Sheet error:", err));
 
-  // 📲 WHATSAPP MESSAGE
+  // WHATSAPP MESSAGE
   const message =
 `🚖 BelHopper Ride Request
 Name: ${name}
@@ -453,12 +451,32 @@ Return Trip: ${returnTrip}`;
   navigator.clipboard.writeText(message).then(() => {
     window.open("https://wa.me/", "_blank");
     alert("Copied. Paste in WhatsApp group.");
-  });
 
-  // 💾 SAVE PHONE FOR NEXT TIME
-  localStorage.setItem("phone", phone);
+    // 💾 Save phone for next time
+    localStorage.setItem("phone", phone);
+
+    // 🧹 CLEAR FORM (this is the new part)
+    clearForm();
+
+  }).catch(err => {
+    alert("Failed to copy message.");
+    console.error(err);
+  });
+}
+
+
+// 🔥 FORM RESET FUNCTION
+function clearForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("pickup").value = "";
+  document.getElementById("dropoff").value = "";
+  document.getElementById("passenger").value = "";
+  document.getElementById("time").selectedIndex = 0;
+  document.getElementById("return").selectedIndex = 0;
+
+  // Keep phone (important for repeat users)
+  document.getElementById("phone").value = localStorage.getItem("phone") || "";
 }
 </script>
-
 </body>
 </html>
