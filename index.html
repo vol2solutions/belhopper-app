@@ -338,6 +338,7 @@ footer {
     <h3>Book Your Trip</h3>
 
     <input type="text" id="name" placeholder="Full Name">
+    <input type="tel" id="phone" placeholder="Phone Number (e.g. 0821234567)">
     <input type="text" id="pickup" placeholder="Pickup Location">
     <input type="text" id="dropoff" placeholder="Drop-off Location">
 
@@ -400,19 +401,41 @@ footer {
 
 <script>
 function sendRideRequest() {
-  const name = document.getElementById("name").value;
-  const pickup = document.getElementById("pickup").value;
-  const dropoff = document.getElementById("dropoff").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const pickup = document.getElementById("pickup").value.trim();
+  const dropoff = document.getElementById("dropoff").value.trim();
+  const time = document.getElementById("time").value;
+  const passenger = document.getElementById("passenger").value.trim();
+  const returnTrip = document.getElementById("return").value;
+
+  // Basic validation
+  if (!name || !phone || !pickup || !dropoff || !passenger) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  // Simple phone validation (SA format basic)
+  const phonePattern = /^0\d{9}$/;
+  if (!phonePattern.test(phone)) {
+    alert("Enter a valid phone number (e.g. 0821234567)");
+    return;
+  }
 
   const message =
-`BelHopper Ride Request
+`🚖 BelHopper Ride Request
 Name: ${name}
+Phone: ${phone}
 Pickup: ${pickup}
-Dropoff: ${dropoff}`;
+Dropoff: ${dropoff}
+Passengers: ${passenger}
+Time: ${time}
+Return Trip: ${returnTrip}`;
 
+  // Copy + open WhatsApp
   navigator.clipboard.writeText(message).then(() => {
     window.open("https://wa.me/", "_blank");
-    alert("Copied. Paste in WhatsApp.");
+    alert("Copied. Paste in WhatsApp group.");
   });
 }
 </script>
