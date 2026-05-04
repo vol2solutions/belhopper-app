@@ -576,6 +576,71 @@ function calculatePrice() {
     <small>Final price will be confirmed with your driver.</small>
   `;
 }
+
+// 🎯 EXACT ROUTE PRICING (from your table)
+const routePrices = {
+  "Extension-Self Help": "R40",
+  "Extension-Toilet City": "R40",
+  "Extension-Musicals": "R40",
+  "Extension-Old Belhar": "R50",
+
+  "Self Help-Toilet City": "R40",
+  "Self Help-Musicals": "R50",
+  "Self Help-Old Belhar": "R55",
+
+  "Toilet City-Musicals": "R40",
+  "Toilet City-Old Belhar": "R50-R55",
+
+  "Musicals-Old Belhar": "R45",
+
+  // Add more as needed over time...
+};
+
+// 🧠 LOCAL AREAS (cheap trips)
+const localAreas = [
+  "Extension",
+  "Self Help",
+  "Toilet City",
+  "Musicals",
+  "Old Belhar",
+  "Erica Square",
+  "Airport Mall",
+  "UWC/CPUT"
+];
+
+// 🧠 FALLBACK RANGES
+const fallbackPrices = {
+  LOCAL: "R35 - R55",
+  NEARBY: "R60 - R120",
+  LONG: "R120 - R210"
+};
+
+
+// 🎯 PRICE CALCULATION FUNCTION
+function getPriceEstimate(pickup, dropoff) {
+
+  if (!pickup || !dropoff) return null;
+
+  const key = `${pickup}-${dropoff}`;
+  const reverseKey = `${dropoff}-${pickup}`;
+
+  // ✅ Exact match
+  if (routePrices[key]) return routePrices[key];
+  if (routePrices[reverseKey]) return routePrices[reverseKey];
+
+  // ✅ Local fallback
+  if (localAreas.includes(pickup) && localAreas.includes(dropoff)) {
+    return fallbackPrices.LOCAL;
+  }
+
+  // ✅ Semi-local (one is local)
+  if (localAreas.includes(pickup) || localAreas.includes(dropoff)) {
+    return fallbackPrices.NEARBY;
+  }
+
+  // ✅ Everything else
+  return fallbackPrices.LONG;
+}
   
 </script>
 </body>
