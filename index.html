@@ -431,7 +431,7 @@ function sendRideRequest() {
   };
 
   // SEND TO GOOGLE SHEETS
-  fetch("YOUR_SCRIPT_URL_HERE", {
+  fetch("https://script.google.com/macros/s/AKfycbwgYCzw9G_-sPRp1ayTPUiHqva0OppBLEdWozY22KcDES1d7p9Dy4EbS-xMSKsopy1JQw/exec", {
     method: "POST",
     body: JSON.stringify(rideData)
   })
