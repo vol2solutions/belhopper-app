@@ -569,14 +569,28 @@ function clearForm() {
 
 // PRICE CHECK CALCULATION
 function calculatePrice() {
+  const pickup = document.getElementById("price-pickup").value.trim();
+  const dropoff = document.getElementById("price-dropoff").value.trim();
   const result = document.getElementById("price-result");
 
+  if (!pickup || !dropoff) {
+    result.innerHTML = "⚠️ Please select both locations.";
+    return;
+  }
+
+  if (pickup === dropoff) {
+    result.innerHTML = "⚠️ Pickup and drop-off cannot be the same.";
+    return;
+  }
+
+  const price = getPriceEstimate(pickup, dropoff);
+
   result.innerHTML = `
-    Estimated Fare: R-- <br>
+    💰 Estimated Fare: <strong>${price}</strong>
     <small>Final price will be confirmed with your driver.</small>
   `;
 }
-
+  
 // 🎯 EXACT ROUTE PRICING (from your table)
 const routePrices = {
   "Extension-Self Help": "R40",
