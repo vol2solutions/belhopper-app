@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules - Belhopper Transport</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b2e22, #145c43, #1f8a62);
+  color: #fff;
+}
+
+/* GLASS STYLE */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+}
+
+/* NAVBAR */
+nav {
+  width: 92%;
+  margin: 20px auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  height: 52px;
+  width: auto;
+}
+
+.brand h1 {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.back {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.back:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* PAGE WRAPPER */
+.container {
+  width: 92%;
+  margin: 20px auto 50px;
+  padding: 25px;
+}
+
+/* SECTIONS */
+.card {
+  padding: 25px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #d9ffe9;
+}
+
+.card p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #f1f1f1;
+}
+
+/* LIST STYLE */
+ul {
+  margin-left: 18px;
+  margin-top: 10px;
+}
+
+li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* HEADER BLOCK */
+.hero {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.hero span {
+  color: #bfffe0;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="glass">
+  <div class="brand">
+    <img src="images/Logo.png" alt="logo">
+    <h1>Belhopper Rules</h1>
+  </div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero glass">
+    <h1>Community Transport Guidelines</h1>
+    <span>Safe • Reliable • Respectful Travel</span>
+  </div>
+
+  <!-- INTRO -->
+  <div class="card glass">
+    <p><strong>Welcome to Belhopper Community Transport</strong></p>
+    <p>To our new and existing clients — thank you for choosing us. Please take a moment to review our rules to ensure safe and smooth operations for everyone.</p>
+  </div>
+
+  <!-- RULES -->
+  <div class="card glass">
+    <h2>🚫 Not Allowed</h2>
+    <ul>
+      <li>No private trips outside the group system.</li>
+      <li>No lift clubs permitted.</li>
+      <li>No reckless rushing — safety always comes first.</li>
+    </ul>
+  </div>
+
+  <!-- GUIDELINES -->
+  <div class="card glass">
+    <h2>📌 Booking Guidelines</h2>
+    <ul>
+      <li>Provide full pickup details when booking for others.</li>
+      <li>Next-day bookings must be made before 20:30.</li>
+      <li>Be ready on time — drivers wait up to 5 minutes.</li>
+      <li>Large groups (5+) must notify driver in advance.</li>
+      <li>Keep vehicles clean and respected.</li>
+      <li>Immediate payment required for EFT transfers.</li>
+      <li>Be ready in high-risk pickup zones for safety.</li>
+      <li>Some areas may be restricted based on safety conditions.</li>
+    </ul>
+  </div>
+
+  <!-- IMPORTANT NOTE -->
+  <div class="card glass">
+    <h2>⚠️ Important Notice</h2>
+    <p>If you cancel a next-day booking on the morning of the trip, half the fare will be charged.</p>
+    <p>Please cancel before your scheduled pickup time whenever possible.</p>
+  </div>
+
+  <!-- FINAL -->
+  <div class="card glass">
+    <h2>💬 Communication</h2>
+    <p>We value both feedback and complaints. Please report any issues or share compliments — we’re here to improve and serve you better.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
