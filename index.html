@@ -163,6 +163,51 @@ nav a:hover {
   text-align: left;
 }
 
+/* PRICE CHECK */
+.price-check {
+  width: 90%;
+  margin: 40px auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.price-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.price-form {
+  margin-top: 25px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.price-result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f4b400;
+}
+
+/* Disclaimer text */
+.price-result small {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
 /* FEATURES */
 .features, .price-list, .cta {
   width: 90%;
@@ -374,6 +419,50 @@ footer {
   </div>
 </section>
 
+<!-- PRICE CHECK -->
+<section class="price-check glass">
+  <h2>Check Your Fare</h2>
+  <p class="price-desc">
+    Get an estimated price for your trip before booking.
+  </p>
+
+  <div class="price-form">
+
+    <!-- Pickup -->
+    <input list="pickup-options" id="price-pickup" placeholder="Select Pickup Location">
+    <datalist id="pickup-options">
+      <option value="Extension">
+      <option value="Self Help">
+      <option value="Toilet City">
+      <option value="Musicals">
+      <option value="Old Belhar">
+      <option value="Bellville">
+      <option value="Parow">
+      <option value="Cape Town">
+    </datalist>
+
+    <!-- Dropoff -->
+    <input list="dropoff-options" id="price-dropoff" placeholder="Select Drop-off Location">
+    <datalist id="dropoff-options">
+      <option value="Extension">
+      <option value="Self Help">
+      <option value="Toilet City">
+      <option value="Musicals">
+      <option value="Old Belhar">
+      <option value="Bellville">
+      <option value="Parow">
+      <option value="Cape Town">
+    </datalist>
+
+    <!-- Button -->
+    <button class="btn" onclick="calculatePrice()">Calculate Price</button>
+
+    <!-- Result -->
+    <div id="price-result" class="price-result"></div>
+
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section class="features glass">
   <h2>Why Choose BelHopper</h2>
@@ -477,6 +566,17 @@ function clearForm() {
   // Keep phone (important for repeat users)
   document.getElementById("phone").value = localStorage.getItem("phone") || "";
 }
+
+// PRICE CHECK CALCULATION
+function calculatePrice() {
+  const result = document.getElementById("price-result");
+
+  result.innerHTML = `
+    Estimated Fare: R-- <br>
+    <small>Final price will be confirmed with your driver.</small>
+  `;
+}
+  
 </script>
 </body>
 </html>
