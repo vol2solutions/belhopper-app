@@ -409,19 +409,37 @@ function sendRideRequest() {
   const passenger = document.getElementById("passenger").value.trim();
   const returnTrip = document.getElementById("return").value;
 
-  // Basic validation
   if (!name || !phone || !pickup || !dropoff || !passenger) {
     alert("Please fill in all fields");
     return;
   }
 
-  // Simple phone validation (SA format basic)
   const phonePattern = /^0\d{9}$/;
   if (!phonePattern.test(phone)) {
     alert("Enter a valid phone number (e.g. 0821234567)");
     return;
   }
 
+  const rideData = {
+    name,
+    phone,
+    pickup,
+    dropoff,
+    passenger,
+    time,
+    returnTrip
+  };
+
+  // 🔗 SEND TO GOOGLE SHEETS
+  fetch("https://script.google.com/macros/s/AKfycbwgYCzw9G_-sPRp1ayTPUiHqva0OppBLEdWozY22KcDES1d7p9Dy4EbS-xMSKsopy1JQw/exec", {
+    method: "POST",
+    body: JSON.stringify(rideData)
+  })
+  .then(res => res.json())
+  .then(data => console.log("Saved:", data))
+  .catch(err => console.error("Error:", err));
+
+  // 📲 WHATSAPP MESSAGE
   const message =
 `🚖 BelHopper Ride Request
 Name: ${name}
@@ -432,11 +450,13 @@ Passengers: ${passenger}
 Time: ${time}
 Return Trip: ${returnTrip}`;
 
-  // Copy + open WhatsApp
   navigator.clipboard.writeText(message).then(() => {
     window.open("https://wa.me/", "_blank");
     alert("Copied. Paste in WhatsApp group.");
   });
+
+  // 💾 SAVE PHONE FOR NEXT TIME
+  localStorage.setItem("phone", phone);
 }
 </script>
 
