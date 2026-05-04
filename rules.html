@@ -3,76 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rules - Belhopper Transport</title>
+<title>Rules - BelHopper</title>
 
 <style>
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0b2e22, #145c43, #1f8a62);
+  background: linear-gradient(135deg, #0a1f44, #0f2f6b, #f4b400);
   color: #fff;
+  min-height: 100vh;
 }
 
-/* GLASS STYLE */
+/* GLASS (MATCH MAIN PAGE EXACTLY) */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 18px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+  background: rgba(10, 31, 68, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
-/* NAVBAR */
+/* NAV (MATCH MAIN PAGE) */
 nav {
-  width: 92%;
+  width: 90%;
   margin: 20px auto;
-  padding: 14px 20px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.brand {
+.logo-header {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.brand img {
-  height: 52px;
-  width: auto;
+.logo-header img {
+  height: 55px;
+  filter: drop-shadow(0 0 6px rgba(244,180,0,0.5));
 }
 
-.brand h1 {
-  font-size: 20px;
-  letter-spacing: 1px;
+.logo-header h1 {
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.back {
+.tagline {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+nav a {
+  color: #fff;
   text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 10px;
-  transition: 0.3s;
+  font-weight: bold;
 }
 
-.back:hover {
-  background: rgba(255,255,255,0.12);
+nav a:hover {
+  text-decoration: underline;
 }
 
-/* PAGE WRAPPER */
+/* PAGE CONTAINER */
 .container {
-  width: 92%;
-  margin: 20px auto 50px;
-  padding: 25px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 30px;
+}
+
+/* HEADER */
+.hero {
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
 /* SECTIONS */
@@ -84,53 +101,37 @@ nav {
 .card h2 {
   margin-bottom: 12px;
   font-size: 18px;
-  color: #d9ffe9;
 }
 
 .card p {
   line-height: 1.6;
-  margin-bottom: 12px;
-  color: #f1f1f1;
+  margin-bottom: 10px;
 }
 
-/* LIST STYLE */
 ul {
-  margin-left: 18px;
+  margin-left: 20px;
   margin-top: 10px;
 }
 
 li {
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-/* HEADER BLOCK */
-.hero {
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: 26px;
   margin-bottom: 8px;
-}
-
-.hero span {
-  color: #bfffe0;
-  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* MOBILE */
 @media(max-width: 768px) {
   nav {
     flex-direction: column;
-    gap: 10px;
     align-items: flex-start;
+    gap: 10px;
+  }
+
+  .container {
+    padding: 15px;
   }
 
   .hero h1 {
-    font-size: 22px;
+    font-size: 1.6rem;
   }
 }
 </style>
@@ -138,14 +139,17 @@ li {
 
 <body>
 
-<!-- NAV -->
+<!-- NAV (MATCH MAIN PAGE EXACTLY) -->
 <nav class="glass">
-  <div class="brand">
-    <img src="images/Logo.png" alt="logo">
-    <h1>Belhopper Rules</h1>
+  <div class="logo-header">
+    <img src="images/Logo-trans.png">
+    <div>
+      <h1>BELHOPPER</h1>
+      <div class="tagline">Your Ride. Your Way.</div>
+    </div>
   </div>
 
-  <a href="index.html" class="back">← Back to Home</a>
+  <a href="index.html">← Back</a>
 </nav>
 
 <!-- CONTENT -->
@@ -153,14 +157,14 @@ li {
 
   <!-- HERO -->
   <div class="hero glass">
-    <h1>Community Transport Guidelines</h1>
-    <span>Safe • Reliable • Respectful Travel</span>
+    <h1>Rules & Guidelines</h1>
+    <p>Keeping our community safe, reliable, and respectful</p>
   </div>
 
   <!-- INTRO -->
   <div class="card glass">
-    <p><strong>Welcome to Belhopper Community Transport</strong></p>
-    <p>To our new and existing clients — thank you for choosing us. Please take a moment to review our rules to ensure safe and smooth operations for everyone.</p>
+    <p><strong>Welcome to BelHopper Community Transport</strong></p>
+    <p>To our new and existing clients — thank you for choosing us. Please follow the rules below to ensure smooth and safe operations for everyone.</p>
   </div>
 
   <!-- RULES -->
@@ -168,8 +172,8 @@ li {
     <h2>🚫 Not Allowed</h2>
     <ul>
       <li>No private trips outside the group system.</li>
-      <li>No lift clubs permitted.</li>
-      <li>No reckless rushing — safety always comes first.</li>
+      <li>No lift clubs allowed.</li>
+      <li>No unsafe rushing — safety is priority.</li>
     </ul>
   </div>
 
@@ -177,28 +181,28 @@ li {
   <div class="card glass">
     <h2>📌 Booking Guidelines</h2>
     <ul>
-      <li>Provide full pickup details when booking for others.</li>
-      <li>Next-day bookings must be made before 20:30.</li>
-      <li>Be ready on time — drivers wait up to 5 minutes.</li>
-      <li>Large groups (5+) must notify driver in advance.</li>
+      <li>Provide full pickup details when booking.</li>
+      <li>Next-day bookings must be done before 20:30.</li>
+      <li>Be ready on time — drivers wait max 5 minutes.</li>
+      <li>Large groups (5+) must inform driver in advance.</li>
       <li>Keep vehicles clean and respected.</li>
       <li>Immediate payment required for EFT transfers.</li>
-      <li>Be ready in high-risk pickup zones for safety.</li>
-      <li>Some areas may be restricted based on safety conditions.</li>
+      <li>Be ready in high-risk areas.</li>
+      <li>Some areas may be restricted for safety reasons.</li>
     </ul>
   </div>
 
-  <!-- IMPORTANT NOTE -->
+  <!-- IMPORTANT -->
   <div class="card glass">
     <h2>⚠️ Important Notice</h2>
-    <p>If you cancel a next-day booking on the morning of the trip, half the fare will be charged.</p>
-    <p>Please cancel before your scheduled pickup time whenever possible.</p>
+    <p>If you cancel a next-day booking on the morning of the trip, half fare will be charged.</p>
+    <p>Please cancel before your scheduled time where possible.</p>
   </div>
 
-  <!-- FINAL -->
+  <!-- FEEDBACK -->
   <div class="card glass">
-    <h2>💬 Communication</h2>
-    <p>We value both feedback and complaints. Please report any issues or share compliments — we’re here to improve and serve you better.</p>
+    <h2>💬 Feedback</h2>
+    <p>We welcome both complaints and compliments. Your feedback helps us improve the service.</p>
   </div>
 
 </div>
