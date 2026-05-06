@@ -135,7 +135,22 @@ nav a:hover {
   opacity: 0.85;
 }
 
-/* TABLE */
+  /* PRICE LIST */
+.price-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.price-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* REMOVED */ /*
 .table-container {
   overflow-x: auto;
   margin-top: 20px;
@@ -175,7 +190,7 @@ nav a:hover {
   background: rgba(244,180,0,0.4);
   font-weight: bold;
   text-align: left;
-}
+} */
 
 /* PRICE CHECK */
 .price-check {
@@ -429,18 +444,14 @@ footer {
 </section>
 
 <!-- PRICE -->
+<!-- PRICE -->
 <section class="price-list glass">
   <h2>Price List</h2>
 
-  <div class="table-container">
-    <table class="price-table">
-      <tr><th>Route</th><th>Price</th></tr>
-      <tr><td>Local Trips</td><td>R35 - R55</td></tr>
-      <tr><td>Nearby Areas</td><td>R60 - R120</td></tr>
-      <tr><td>Long Distance</td><td>R120 - R210</td></tr>
-    </table>
+  <div class="price-image-container">
+    <img src="images/price-list.jpeg" alt="Price List" class="price-image">
   </div>
-</section> 
+</section>
 
 <!-- PRICE CHECK -->
 <section class="price-check glass">
