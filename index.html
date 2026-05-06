@@ -478,7 +478,7 @@ footer {
     </datalist>
 
     <!-- Button -->
-    <button class="btn" onclick="calculatePrice()">Calculate Price</button>
+    <!--<button class="btn" onclick="calculatePrice()">Calculate Price</button> -->
 
     <!-- Result -->
     <div id="price-result" class="price-result"></div>
@@ -593,25 +593,36 @@ function clearForm() {
   document.getElementById("phone").value = localStorage.getItem("phone") || "";
 }
 
-// 🎯 PRICE CALCULATION (UI + VALIDATION)
-function calculatePrice() {
-  const pickup = document.getElementById("price-pickup").value.trim();
-  const dropoff = document.getElementById("price-dropoff").value.trim();
+// 🎯 EVENT LISTENERS (AUTO CALCULATE)
+document.getElementById("price-pickup").addEventListener("input", autoCalculate);
+document.getElementById("price-dropoff").addEventListener("input", autoCalculate);
+
+
+// 🎯 AUTO CALCULATION FUNCTION (UI + VALIDATION)
+function autoCalculate() {
+  const pickupInput = document.getElementById("price-pickup");
+  const dropoffInput = document.getElementById("price-dropoff");
   const result = document.getElementById("price-result");
 
-  // 🔒 Validation (ONLY happens here)
+  const pickup = pickupInput.value.trim();
+  const dropoff = dropoffInput.value.trim();
+
+  // ⛔ If one field is empty → clear result
   if (!pickup || !dropoff) {
-    result.innerHTML = "⚠️ Please select both locations.";
+    result.innerHTML = "";
     return;
   }
 
+  // ⛔ Same location check
   if (pickup === dropoff) {
     result.innerHTML = "⚠️ Pickup and drop-off cannot be the same.";
     return;
   }
 
+  // 💰 Get price
   const price = getPriceEstimate(pickup, dropoff);
 
+  // 🎯 Display result
   result.innerHTML = `
     💰 Estimated Fare: <strong>${price}</strong>
     <small>Final price will be confirmed with your driver.</small>
@@ -650,7 +661,7 @@ const localAreas = [
 ];
 
 
-// 🧠 FALLBACK RANGES
+// 🧠 FALLBACK PRICING
 const fallbackPrices = {
   LOCAL: "R35 - R55",
   NEARBY: "R60 - R120",
@@ -658,13 +669,13 @@ const fallbackPrices = {
 };
 
 
-// 🎯 CORE PRICING ENGINE (NO VALIDATION HERE)
+// 🎯 CORE PRICING ENGINE (PURE LOGIC)
 function getPriceEstimate(pickup, dropoff) {
 
   const key = `${pickup}-${dropoff}`;
   const reverseKey = `${dropoff}-${pickup}`;
 
-  // ✅ Exact route match
+  // ✅ Exact match
   if (routePrices[key]) return routePrices[key];
   if (routePrices[reverseKey]) return routePrices[reverseKey];
 
