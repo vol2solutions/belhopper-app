@@ -452,61 +452,21 @@ footer {
   <div class="price-form">
 
     <!-- Pickup -->
-    <input list="pickup-options" id="price-pickup" placeholder="Select Pickup Location">
-    <datalist id="pickup-options">
-      <!-- INTERNAL -->
-      <option value="Self-Help">
-      <option value="Extension">
-      <option value="Musicals">
-      <option value="Toilet City">
-      <option value="Old Belhar">
-    
-      <!-- EXTERNAL -->
-      <option value="The Hague">
-      <option value="Roosendal">
-      <option value="Leiden">
-      <option value="Voorburg">
-      <option value="Wesbank">
-      <option value="Kuils River">
-      <option value="Highbury">
-      <option value="Zevenwacht">
-      <option value="Blackheath">
-      <option value="Eersteriver">
-      <option value="Access Park">
-      <option value="Ravensmead">
-      <option value="Tygerberg Hosp">
-      <option value="Stikland">
-      <option value="Bellville">
-      <option value="Bellville South">
-      <option value="Parow">
-      <option value="Parow Ind">
-      <option value="Goodwood">
-      <option value="Ryterwacht">
-      <option value="Elsiesriver">
-      <option value="Airport / Airport Ind">
-      <option value="N1 City">
-      <option value="Tygervalley">
-      <option value="Durbanville">
-      <option value="Cape Gate">
-      <option value="Brackenfell">
-      <option value="Kraaifontein">
-      <option value="Mitchells Plain">
-      <option value="Kenilworth">
-      <option value="Claremont">
-      <option value="Century City">
-      <option value="Cape Town">
-    </datalist>
+    <input list="location-options" id="price-pickup" placeholder="Select Pickup Location">
 
     <!-- Dropoff -->
-    <input list="dropoff-options" id="price-dropoff" placeholder="Select Drop-off Location">
-    <datalist id="dropoff-options">
+    <input list="location-options" id="price-dropoff" placeholder="Select Drop-off Location">
+
+    <!-- Shared Location List -->
+    <datalist id="location-options">
+
       <!-- INTERNAL -->
       <option value="Self-Help">
       <option value="Extension">
       <option value="Musicals">
       <option value="Toilet City">
       <option value="Old Belhar">
-    
+
       <!-- EXTERNAL -->
       <option value="The Hague">
       <option value="Roosendal">
@@ -541,11 +501,8 @@ footer {
       <option value="Claremont">
       <option value="Century City">
       <option value="Cape Town">
+
     </datalist>
-
-
-    <!-- Button -->
-    <!--<button class="btn" onclick="calculatePrice()">Calculate Price</button> -->
 
     <!-- Result -->
     <div id="price-result" class="price-result"></div>
