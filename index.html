@@ -454,28 +454,95 @@ footer {
     <!-- Pickup -->
     <input list="pickup-options" id="price-pickup" placeholder="Select Pickup Location">
     <datalist id="pickup-options">
-      <option value="Extension">
-      <option value="Self Help">
-      <option value="Toilet City">
-      <option value="Musicals">
-      <option value="Old Belhar">
-      <option value="Bellville">
-      <option value="Parow">
-      <option value="Cape Town">
-    </datalist>
+  <!-- INTERNAL -->
+  <option value="Self-Help">
+  <option value="Extension">
+  <option value="Musicals">
+  <option value="Toilet City">
+  <option value="Old Belhar">
+
+  <!-- EXTERNAL -->
+  <option value="The Hague">
+  <option value="Roosendal">
+  <option value="Leiden">
+  <option value="Voorburg">
+  <option value="Wesbank">
+  <option value="Kuils River">
+  <option value="Highbury">
+  <option value="Zevenwacht">
+  <option value="Blackheath">
+  <option value="Eersteriver">
+  <option value="Access Park">
+  <option value="Ravensmead">
+  <option value="Tygerberg Hosp">
+  <option value="Stikland">
+  <option value="Bellville">
+  <option value="Bellville South">
+  <option value="Parow">
+  <option value="Parow Ind">
+  <option value="Goodwood">
+  <option value="Ryterwacht">
+  <option value="Elsiesriver">
+  <option value="Airport / Airport Ind">
+  <option value="N1 City">
+  <option value="Tygervalley">
+  <option value="Durbanville">
+  <option value="Cape Gate">
+  <option value="Brackenfell">
+  <option value="Kraaifontein">
+  <option value="Mitchells Plain">
+  <option value="Kenilworth">
+  <option value="Claremont">
+  <option value="Century City">
+  <option value="Cape Town">
+</datalist>
 
     <!-- Dropoff -->
     <input list="dropoff-options" id="price-dropoff" placeholder="Select Drop-off Location">
-    <datalist id="dropoff-options">
-      <option value="Extension">
-      <option value="Self Help">
-      <option value="Toilet City">
-      <option value="Musicals">
-      <option value="Old Belhar">
-      <option value="Bellville">
-      <option value="Parow">
-      <option value="Cape Town">
-    </datalist>
+    <datalist id="pickup-options">
+  <!-- INTERNAL -->
+  <option value="Self-Help">
+  <option value="Extension">
+  <option value="Musicals">
+  <option value="Toilet City">
+  <option value="Old Belhar">
+
+  <!-- EXTERNAL -->
+  <option value="The Hague">
+  <option value="Roosendal">
+  <option value="Leiden">
+  <option value="Voorburg">
+  <option value="Wesbank">
+  <option value="Kuils River">
+  <option value="Highbury">
+  <option value="Zevenwacht">
+  <option value="Blackheath">
+  <option value="Eersteriver">
+  <option value="Access Park">
+  <option value="Ravensmead">
+  <option value="Tygerberg Hosp">
+  <option value="Stikland">
+  <option value="Bellville">
+  <option value="Bellville South">
+  <option value="Parow">
+  <option value="Parow Ind">
+  <option value="Goodwood">
+  <option value="Ryterwacht">
+  <option value="Elsiesriver">
+  <option value="Airport / Airport Ind">
+  <option value="N1 City">
+  <option value="Tygervalley">
+  <option value="Durbanville">
+  <option value="Cape Gate">
+  <option value="Brackenfell">
+  <option value="Kraaifontein">
+  <option value="Mitchells Plain">
+  <option value="Kenilworth">
+  <option value="Claremont">
+  <option value="Century City">
+  <option value="Cape Town">
+</datalist>
+
 
     <!-- Button -->
     <!--<button class="btn" onclick="calculatePrice()">Calculate Price</button> -->
@@ -598,31 +665,111 @@ document.getElementById("price-pickup").addEventListener("input", autoCalculate)
 document.getElementById("price-dropoff").addEventListener("input", autoCalculate);
 
 
-// 🎯 AUTO CALCULATION FUNCTION (UI + VALIDATION)
+// 🎯 AUTO CALCULATE
+document.getElementById("price-pickup").addEventListener("input", autoCalculate);
+document.getElementById("price-dropoff").addEventListener("input", autoCalculate);
+
+
+// 🎯 INTERNAL AREAS
+const internalAreas = [
+  "Self-Help",
+  "Extension",
+  "Musicals",
+  "Toilet City",
+  "Old Belhar"
+];
+
+
+// 🎯 INTERNAL EXACT PRICING
+const internalPrices = {
+  "Self-Help-Self-Help": "R35",
+  "Self-Help-Extension": "R40",
+  "Self-Help-Musicals": "R40",
+  "Self-Help-Toilet City": "R40",
+  "Self-Help-Old Belhar": "R55",
+
+  "Extension-Extension": "R35",
+  "Extension-Self-Help": "R40",
+  "Extension-Musicals": "R40",
+  "Extension-Toilet City": "R40",
+  "Extension-Old Belhar": "R50",
+
+  "Musicals-Musicals": "R35",
+  "Musicals-Self-Help": "R40",
+  "Musicals-Extension": "R40",
+  "Musicals-Toilet City": "R40",
+  "Musicals-Old Belhar": "R45",
+
+  "Toilet City-Toilet City": "R35",
+  "Toilet City-Self-Help": "R40",
+  "Toilet City-Musicals": "R40",
+  "Toilet City-Extension": "R40",
+  "Toilet City-Old Belhar": "R50",
+
+  "Old Belhar-Old Belhar": "R35",
+  "Old Belhar-Self-Help": "R40",
+  "Old Belhar-Musicals": "R40",
+  "Old Belhar-Extension": "R40",
+  "Old Belhar-Toilet City": "R50"
+};
+
+
+// 🎯 EXTERNAL PRICING (BASED ON BELHAR)
+const externalPrices = {
+  "The Hague": "R55 - R65",
+  "Roosendal": "R55 - R70",
+  "Leiden": "R60 - R75",
+  "Voorburg": "R60 - R75",
+  "Wesbank": "R65 - R90",
+  "Kuils River": "R95 - R120",
+  "Highbury": "R70 - R90",
+  "Zevenwacht": "R90 - R110",
+  "Blackheath": "R100 - R120",
+  "Eersteriver": "R120 - R160",
+  "Access Park": "R90 - R100",
+  "Ravensmead": "R65 - R85",
+  "Tygerberg Hosp": "R65 - R85",
+  "Stikland": "R85 - R95",
+  "Bellville": "R85 - R105",
+  "Bellville South": "R80 - R90",
+  "Parow": "R80 - R110",
+  "Parow Ind": "R65 - R85",
+  "Goodwood": "R110 - R150",
+  "Ryterwacht": "R110 - R120",
+  "Elsiesriver": "R70 - R100",
+  "Airport / Airport Ind": "R75 - R100",
+  "N1 City": "R120 - R140",
+  "Tygervalley": "R120 - R135",
+  "Durbanville": "R125 - R145",
+  "Cape Gate": "R140 - R160",
+  "Brackenfell": "R120 - R160",
+  "Kraaifontein": "R140 - R165",
+  "Mitchells Plain": "R120 - R160",
+  "Kenilworth": "R150 - R170",
+  "Claremont": "R140 - R160",
+  "Century City": "R170 - R190",
+  "Cape Town": "R190 - R210"
+};
+
+
+// 🎯 AUTO CALC FUNCTION
 function autoCalculate() {
-  const pickupInput = document.getElementById("price-pickup");
-  const dropoffInput = document.getElementById("price-dropoff");
+  const pickup = document.getElementById("price-pickup").value.trim();
+  const dropoff = document.getElementById("price-dropoff").value.trim();
   const result = document.getElementById("price-result");
 
-  const pickup = pickupInput.value.trim();
-  const dropoff = dropoffInput.value.trim();
-
-  // ⛔ If one field is empty → clear result
   if (!pickup || !dropoff) {
     result.innerHTML = "";
     return;
   }
 
-  // ⛔ Same location check
   if (pickup === dropoff) {
-    result.innerHTML = "⚠️ Pickup and drop-off cannot be the same.";
+    result.innerHTML = "💰 Estimated Fare: <strong>R35</strong>";
     return;
   }
 
-  // 💰 Get price
-  const price = getPriceEstimate(pickup, dropoff);
+  const price = getPrice(pickup, dropoff);
 
-  // 🎯 Display result
   result.innerHTML = `
     💰 Estimated Fare: <strong>${price}</strong>
     <small>Final price will be confirmed with your driver.</small>
@@ -630,67 +777,31 @@ function autoCalculate() {
 }
 
 
-// 🎯 EXACT ROUTE PRICING
-const routePrices = {
-  "Extension-Self Help": "R40",
-  "Extension-Toilet City": "R40",
-  "Extension-Musicals": "R40",
-  "Extension-Old Belhar": "R50",
-
-  "Self Help-Toilet City": "R40",
-  "Self Help-Musicals": "R50",
-  "Self Help-Old Belhar": "R55",
-
-  "Toilet City-Musicals": "R40",
-  "Toilet City-Old Belhar": "R50-R55",
-
-  "Musicals-Old Belhar": "R45",
-};
-
-
-// 🧠 LOCAL AREAS
-const localAreas = [
-  "Extension",
-  "Self Help",
-  "Toilet City",
-  "Musicals",
-  "Old Belhar",
-  "Erica Square",
-  "Airport Mall",
-  "UWC/CPUT"
-];
-
-
-// 🧠 FALLBACK PRICING
-const fallbackPrices = {
-  LOCAL: "R35 - R55",
-  NEARBY: "R60 - R120",
-  LONG: "R120 - R210"
-};
-
-
-// 🎯 CORE PRICING ENGINE (PURE LOGIC)
-function getPriceEstimate(pickup, dropoff) {
+// 🎯 CORE PRICING ENGINE
+function getPrice(pickup, dropoff) {
 
   const key = `${pickup}-${dropoff}`;
   const reverseKey = `${dropoff}-${pickup}`;
 
-  // ✅ Exact match
-  if (routePrices[key]) return routePrices[key];
-  if (routePrices[reverseKey]) return routePrices[reverseKey];
+  // ✅ INTERNAL EXACT
+  if (internalPrices[key]) return internalPrices[key];
+  if (internalPrices[reverseKey]) return internalPrices[reverseKey];
 
-  // ✅ Both local
-  if (localAreas.includes(pickup) && localAreas.includes(dropoff)) {
-    return fallbackPrices.LOCAL;
+  const pickupInternal = internalAreas.includes(pickup);
+  const dropoffInternal = internalAreas.includes(dropoff);
+
+  // ✅ INTERNAL → EXTERNAL
+  if (pickupInternal && externalPrices[dropoff]) {
+    return externalPrices[dropoff];
   }
 
-  // ✅ One local
-  if (localAreas.includes(pickup) || localAreas.includes(dropoff)) {
-    return fallbackPrices.NEARBY;
+  // ✅ EXTERNAL → INTERNAL
+  if (dropoffInternal && externalPrices[pickup]) {
+    return externalPrices[pickup];
   }
 
-  // ✅ Everything else
-  return fallbackPrices.LONG;
+  // ❗ EXTERNAL → EXTERNAL (not defined yet)
+  return "Contact driver for quote";
 }
   
 </script>
