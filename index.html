@@ -593,12 +593,13 @@ function clearForm() {
   document.getElementById("phone").value = localStorage.getItem("phone") || "";
 }
 
-// PRICE CHECK CALCULATION
+// 🎯 PRICE CALCULATION (UI + VALIDATION)
 function calculatePrice() {
   const pickup = document.getElementById("price-pickup").value.trim();
   const dropoff = document.getElementById("price-dropoff").value.trim();
   const result = document.getElementById("price-result");
 
+  // 🔒 Validation (ONLY happens here)
   if (!pickup || !dropoff) {
     result.innerHTML = "⚠️ Please select both locations.";
     return;
@@ -616,8 +617,9 @@ function calculatePrice() {
     <small>Final price will be confirmed with your driver.</small>
   `;
 }
-  
-// 🎯 EXACT ROUTE PRICING (from your table)
+
+
+// 🎯 EXACT ROUTE PRICING
 const routePrices = {
   "Extension-Self Help": "R40",
   "Extension-Toilet City": "R40",
@@ -632,11 +634,10 @@ const routePrices = {
   "Toilet City-Old Belhar": "R50-R55",
 
   "Musicals-Old Belhar": "R45",
-
-  // Add more as needed over time...
 };
 
-// 🧠 LOCAL AREAS (cheap trips)
+
+// 🧠 LOCAL AREAS
 const localAreas = [
   "Extension",
   "Self Help",
@@ -648,6 +649,7 @@ const localAreas = [
   "UWC/CPUT"
 ];
 
+
 // 🧠 FALLBACK RANGES
 const fallbackPrices = {
   LOCAL: "R35 - R55",
@@ -656,24 +658,22 @@ const fallbackPrices = {
 };
 
 
-// 🎯 PRICE CALCULATION FUNCTION
+// 🎯 CORE PRICING ENGINE (NO VALIDATION HERE)
 function getPriceEstimate(pickup, dropoff) {
-
-  if (!pickup || !dropoff) return null;
 
   const key = `${pickup}-${dropoff}`;
   const reverseKey = `${dropoff}-${pickup}`;
 
-  // ✅ Exact match
+  // ✅ Exact route match
   if (routePrices[key]) return routePrices[key];
   if (routePrices[reverseKey]) return routePrices[reverseKey];
 
-  // ✅ Local fallback
+  // ✅ Both local
   if (localAreas.includes(pickup) && localAreas.includes(dropoff)) {
     return fallbackPrices.LOCAL;
   }
 
-  // ✅ Semi-local (one is local)
+  // ✅ One local
   if (localAreas.includes(pickup) || localAreas.includes(dropoff)) {
     return fallbackPrices.NEARBY;
   }
