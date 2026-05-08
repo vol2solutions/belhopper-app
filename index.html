@@ -537,7 +537,7 @@ footer {
   <h2>Join the Ride Network</h2>
   <p>Request rides instantly via WhatsApp</p>
 
-  <a href="https://chat.whatsapp.com/https://chat.whatsapp.com/JwwJuNElLOU9CXlw9WYmQH" 
+  <a href="https://chat.whatsapp.com/JwwJuNElLOU9CXlw9WYmQH"
    class="whatsapp-btn" 
    target="_blank">
    Join WhatsApp Group
@@ -559,17 +559,20 @@ function sendRideRequest() {
   const passenger = document.getElementById("passenger").value.trim();
   const returnTrip = document.getElementById("return").value;
 
+  // VALIDATION
   if (!name || !phone || !pickup || !dropoff || !passenger) {
     alert("Please fill in all fields");
     return;
   }
 
   const phonePattern = /^0\d{9}$/;
+
   if (!phonePattern.test(phone)) {
     alert("Enter a valid phone number (e.g. 0821234567)");
     return;
   }
 
+  // DATA OBJECT
   const rideData = {
     name,
     phone,
@@ -590,6 +593,7 @@ function sendRideRequest() {
   // WHATSAPP MESSAGE
   const message =
 `🚖 BelHopper Ride Request
+
 Name: ${name}
 Phone: ${phone}
 Pickup: ${pickup}
@@ -598,20 +602,17 @@ Passengers: ${passenger}
 Time: ${time}
 Return Trip: ${returnTrip}`;
 
-  navigator.clipboard.writeText(message).then(() => {
-    window.open("https://wa.me/", "_blank");
-    alert("Copied. Paste in WhatsApp group.");
+  // ENCODE MESSAGE
+  const encodedMessage = encodeURIComponent(message);
 
-    // 💾 Save phone for next time
-    localStorage.setItem("phone", phone);
+  // OPEN WHATSAPP DIRECTLY
+  window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");
 
-    // 🧹 CLEAR FORM (this is the new part)
-    clearForm();
+  // SAVE PHONE
+  localStorage.setItem("phone", phone);
 
-  }).catch(err => {
-    alert("Failed to copy message.");
-    console.error(err);
-  });
+  // CLEAR FORM
+  clearForm();
 }
 
 
